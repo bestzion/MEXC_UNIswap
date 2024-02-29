@@ -4,7 +4,7 @@ const crypto = require('crypto');
 
 function placeOrder(quantity, price) {
     const apiKey = process.env.MEXC_API_KEY;
-    const secretKey = process.env.MEXC_SECRET_KEY;
+    const secretKey = process.env.MEXC_API_SECRET;
     const baseEndpoint = 'https://api.mexc.com';
     const endpoint = '/api/v3/order';
 
@@ -36,5 +36,4 @@ function placeOrder(quantity, price) {
         });
 }
 
-// Execute the function with the desired quantity and price for ELUSDT.
-placeOrder(1.5, 10.50); // Replace 1.5 with the quantity and 10.50 with the price you want.
+placeOrder(1900, 0.005300);
