@@ -1,7 +1,6 @@
-const axios = require('axios');
-const {parse} = require("dotenv");
+import axios from 'axios';
 
-async function getBestAskPrice(symbol) {
+export async function MEXCfetchPriceData(symbol) {
     const endpoint = `https://api.mexc.com/api/v3/depth`;
     try {
         const response = await axios.get(endpoint, {
@@ -19,22 +18,22 @@ async function getBestAskPrice(symbol) {
         const Bidprice = Bid[0];
         const AskTickerVolume = Askprice * AskQuantity
         const BidTickerVolume = Bidprice * BidQuantity
-        const currentTime = new Date().toLocaleString();
-        console.log(`[${currentTime}] Ask price for ${symbol}: ${Askprice} / Volume: ${AskTickerVolume}`);
-        console.log(`[${currentTime}] Bid price for ${symbol}: ${Bidprice} / Volume: ${BidTickerVolume}`);
+        // const currentTime = new Date().toLocaleString();
+        // console.log(`[${currentTime}] Ask price for ${symbol}: ${Askprice} / Volume: ${AskTickerVolume}`);
+        // console.log(`[${currentTime}] Bid price for ${symbol}: ${Bidprice} / Volume: ${BidTickerVolume}`);
 
-        return Askprice, Bidprice;
+        return { Askprice, Bidprice };
     } catch (error) {
         console.error(`Error getting best ask price for ${symbol}:`, error);
         throw error;
     }
 }
 
-// Function to repeat the price fetching every minute
-function startPriceFetchLoop(symbol) {
-    getBestAskPrice(symbol); // Fetch the price immediately when starting
-    setInterval(() => getBestAskPrice(symbol), 1000); // Fetch the price every minute (60000ms)
-}
-
-// Example usage
-startPriceFetchLoop('ELUSDT'); // Replace with 'EL/USDT' if required by the API endpoint
+// // Function to repeat the price fetching every minute
+// function startPriceFetchLoop(symbol) {
+//     getBestAskPrice(symbol); // Fetch the price immediately when starting
+//     setInterval(() => getBestAskPrice(symbol), 1000); // Fetch the price every minute (60000ms)
+// }
+//
+// // Example usage
+// startPriceFetchLoop('ELUSDT'); // Replace with 'EL/USDT' if required by the API endpoint

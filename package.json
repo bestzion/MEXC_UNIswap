@@ -3,14 +3,18 @@
   "version": "1.0.0",
   "description": "",
   "main": "Mexc_futures_order.js",
+  "type": "module",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@uniswap/v2-sdk": "^4.2.1",
     "axios": "^1.6.7",
     "crypto": "^1.0.1",
-    "dotenv": "^16.4.5"
+    "dotenv": "^16.4.5",
+    "ethers": "^6.11.1",
+    "request": "^2.88.2"
   }
 }
